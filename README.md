@@ -1,25 +1,28 @@
-# Problème 2 : Génération de texte
+# Problème : Génération de texte
 
 ## Objectif principal
 
 Ce problème consiste à réaliser un programme d'aide à la rédaction de texte, à
 la manière du système d'aide à la saisie présent sur les téléphones portables. 
 
-La principale fonctionnalité souhaitée consiste à proposer, étant donnés les
-mots déjà tapés par l'utilisateur, une liste de mots suivants possibles. Une
-autre fonctionnalité envisageable est de proposer une ou plusieurs complétions
-ou corrections du mot courant.
-
-Un autre usage possible du programme consiste à générer un texte aléatoire de
-manière autonome, à la manière d'un agent conversationnel comme ChatGPT (mais sans le *deep learning*...). Par exemple :
-
-```
-$ python textgen.py --auto
-un voyageur sur quatre opte pour des conflits externes afin d'en détourner l'attention
-```
+On envisage trois principales fonctionnalités :
+1.  Proposer, étant donnés les mots déjà tapés par l'utilisateur, une liste de
+    mots suivants possibles.
+1.  Générer un texte aléatoire de manière autonome, à la manière d'un agent
+    conversationnel comme ChatGPT (mais sans le *deep learning*...), à partir
+    d'un corpus de textes de référence. Par exemple :
+    ```bash
+    $ python textgen.py --auto
+    ```
+    pourrait engendrer le texte :
+    ```
+    un voyageur sur quatre opte pour des conflits externes afin d'en détourner l'attention
+    ```
+1.  Proposer une ou plusieurs complétions ou corrections du mot courant à l'aide
+    d'un lexique (liste de mots de la langue utilisée).
 
 On attend de ce programme qu'il permette d'ajuster plusieurs paramètres
-concernant la génération (mode autonome ou non, auto-correct, nombre de
+concernant la génération (mode autonome ou non, auto-correction, nombre de
 propositions de mots, fichiers d'entraînement...).
 
 ## Récupération et préparation d'un corpus de texte
@@ -81,8 +84,8 @@ et
 Le ver mange la pomme jaune.
 ```
 
-Les successions de mots peuvent alors être représentées sous la forme de la
-matrice suivante :
+Les successions de mots peuvent alors être représentées sous la forme du tableau
+suivant :
 
 |           | je | mange | une | pomme | jaune | le | ver | la |
 |-----------|----|-------|-----|-------|-------|----|-----|----|
@@ -148,11 +151,14 @@ affiché sur le terminal.
 
 ## Travail demandé
 
-Nous présentons ici la partie obligatoire du travail à réaliser, qu'il est indispensable de terminer entièrement pour obtenir une bonne appréciation. Une liste d'améliorations optionnelles est fournie plus loin dans le sujet.
+Nous présentons ici la partie obligatoire du travail à réaliser, qu'il est
+indispensable de terminer entièrement pour obtenir une bonne appréciation. Une
+liste d'améliorations optionnelles est fournie plus loin dans le sujet.
 
 La partie obligatoire du travail est d'écrire un programme générant du texte à
 l'aide de la méthode décrite ci-dessus. On s'assurera également d'implémenter
-les paramètres suivants (spécifiables par l'utilisateur en ligne de commande) à l'aide du module `argparse` :
+les paramètres suivants (spécifiables par l'utilisateur en ligne de commande) à
+l'aide du module `argparse` :
 
 * `--taille <entier>` : Réglage de la taille des contextes utilisés (par défaut
   : 3).
@@ -187,7 +193,7 @@ Si vous avez entièrement terminé la partie obligatoire, vous êtes libre de
 réaliser toute amélioration qui vous intéresse, ou même de simplement vous
 documenter et rassembler des informations pertinentes sur le sujet (que vous
 pourrez présenter sous la forme d'un bref rapport, par exemple dans un fichier
-`rapport.txt`). Voici quelques idées d'approfondissements possibles.
+`rapport.md`). Voici quelques idées d'approfondissements possibles.
 
 ### Mise en forme du texte
 
@@ -201,8 +207,8 @@ guillemets et parenthèses soit correctement respecté.
 
 ### Gestion améliorée du corpus
 
-On peut envisager de gérer plusieurs corpus de texte différents et de permettre le
-choix du corpus à partir duquel la génération doit être faite.
+On peut envisager de gérer plusieurs corpus de texte différents et de permettre
+le choix du corpus à partir duquel la génération doit être faite.
 
 Ceci peut être complété par une récupération de corpus depuis d'autres sources.
 On pourra, par exemple, utiliser le module python ```wikipedia``` pour
@@ -251,7 +257,10 @@ ou saisis par le passé, y compris lors de précédentes exécutions du programm
 de prendre en compte d'une manière ou d'une autre une plus grande portion du
 texte, etc.
 
-*Remarque :* il existe des cours en ligne pour apprendre à coder son propre LLM (par exemplei [ici](https://karpathy.ai/zero-to-hero.html) ou [là](https://www.freecodecamp.org/news/how-to-build-a-large-language-model-from-scratch-using-python/)) mais c'est nettement au-delà de ce que nous envisageons pour ce travail.
+*Remarque :* il existe des cours en ligne pour apprendre à coder son propre LLM
+(par exemplei [ici](https://karpathy.ai/zero-to-hero.html) ou
+[là](https://www.freecodecamp.org/news/how-to-build-a-large-language-model-from-scratch-using-python/))
+mais c'est nettement au-delà de ce que nous envisageons pour ce travail.
 
 ### Idées diverses
 
